@@ -20,7 +20,8 @@ $ece $c "       👻 by mas sugenk slj 👻 "
 
 $ec
 $ec
-$ec "pastikan sudah install package yg dibutuhkan ,python,python2, pip,mechanize,ncurses-utils,wget,git,dll "
+$ec "👉 pastikan sudah install package yg dibutuhkan ,python,"
+$ec "👉 python2 pip,mechanize,ncurses-utils,wget,git,dll "
 $ece $r
 $ec "[$]apa yg ingin anda install👇"
 $ec 
@@ -129,7 +130,13 @@ exit
  
 elif [ $ok == 5 ] ; then
 
-$ec "durung tak garap" 
+pkg install curl
+
+curl -LO https://raw.githubusercontent.com/Hax4us/Metasploit_termux/master/metasploit.sh
+chmod +x metasploit.sh
+
+./metasploit.sh
+
 exit
 
 elif [ $ok == 6 ] ; then
