@@ -20,6 +20,7 @@ $ece $c "       👻 by mas sugenk slj 👻 "
 
 $ec
 $ec
+$ec "pastikan sudah install package yg dibutuhkan ,python,python2, pip,mechanize,ncurses-utils,wget,git,dll
 $ece $r
 $ec "[$]apa yg ingin anda install👇"
 $ec 
@@ -39,7 +40,7 @@ read -p  "pilih satu 👉 " ok
 
 if [ $ok == 1 ] ; then
 sleep 1.6
-git clone https://github.com/st42/termux-sudo
+git clone https://gitlab.com/st42/termux-sudo
 sleep 1.6
 cd termux-sudo
 
@@ -96,7 +97,7 @@ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
 unzip ngrok-stable-linux-arm.zip
 $ec 
 
-$ec"        ATTENTION !"
+$ec "        ATTENTION !"
 $ec
 $ec
 $ec "daftar dulu di ngrok .. kemudian ikuti langkah di websitnya " 
