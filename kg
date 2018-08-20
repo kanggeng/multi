@@ -226,9 +226,20 @@ $ec "pastikan ssh, autossh sudah terinstall dan saya seting
 portnya 8080 "
 $ece $r "setelah HTTP treffic itu adalah url forwaddingnya" 
 $ece $c 
-sleep 2.0 
+s="echo"
+b="echo -e"
 
-autossh -M 0 -R 80:localhost:8080 serveo.net 
+$b "silakan atur dulu "
+"
+
+$b
+
+read -p "setel url  : " ip
+read -p "setel port : " ho
+
+$b
+
+autossh -M 0 -R $ip:80:localhost:$ho serveo.net
 
 fi 
 exit
